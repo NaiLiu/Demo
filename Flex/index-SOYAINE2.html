@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flex Panels  </title>
+  
+</head>
+<body>
+<style>
+	  html {
+      box-sizing: border-box;
+      background:#ffc600;
+      font-family:'helvetica neue';
+      font-size: 20px;
+      font-weight: 200;
+    }
+    body {
+      margin: 0;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    .panels {
+      min-height:100vh;
+      overflow: hidden;
+		display: flex;
+    }
+
+    .panel {
+/*		调试时添加边框以便分辨*/
+		border: 1px solid #fff;
+      background:#6B0F9C;
+      box-shadow:inset 0 0 0 5px rgba(255,255,255,0.1);
+      color:white;
+      text-align: center;
+      align-items:center;
+    
+      transition:
+        font-size 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        flex 0.7s cubic-bezier(0.61,-0.19, 0.7,-0.11),
+        background 0.2s;
+      font-size: 20px;
+      background-size:cover;
+      background-position:center;
+	  flex: 1;
+	  display: flex;
+	  justify-content: center;
+	  flex-direction: column;
+    }
+
+
+    .panel1 { background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595192600253&di=2068cdb5e6e667024cc3db552b20d4a4&imgtype=0&src=http%3A%2F%2Ft8.baidu.com%2Fit%2Fu%3D1484500186%2C1503043093%26fm%3D79%26app%3D86%26f%3DJPEG%3Fw%3D1280%26h%3D853); }
+    .panel2 { background-image:url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3482128345,2137456532&fm=26&gp=0.jpg); }
+    .panel3 { background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595192644285&di=f2ef64c25a46c3fb85f5ca2a272c8034&imgtype=0&src=http%3A%2F%2Fb.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2F2cf5e0fe9925bc31c58bcbc05cdf8db1ca137090.jpg); }
+    .panel4 { background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595192682532&di=b5c775570fbadbd21f6072aeed4c3302&imgtype=0&src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D2258621026%2C55867772%26fm%3D214%26gp%3D0.jpg); }
+    .panel5 { background-image:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1595192754024&di=7d76a70e70373373e8011d704cc7b8d5&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F4%2F53919084f3aa9.jpg); }
+
+    .panel > * {
+      margin: 0;
+      width: 100%;
+      transition:transform 0.5s 0.7s;
+	  align-items: center;
+      display: flex;
+      flex: 1 0 auto;
+      justify-content: center;
+    }
+
+    .panel p {
+      text-transform: uppercase;
+      font-family: 'Amatic SC', cursive;
+      text-shadow:0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
+      font-size: 2em;
+    }
+    .panel p:nth-child(2) {
+      font-size: 4em;
+    }
+
+    .panel.open {
+	   font-size:40px;
+	   flex: 5;
+    }
+  
+    .panel p:first-child {
+    	transform: translateY(-100%);
+    }
+    
+    .panel p:last-child {
+    	transform: translateY(100%);
+    }
+    
+    .panel.open p:first-child {
+    	transform: translateY(0);
+    }
+    
+    .panel.open p:last-child {
+    	transform: translateY(0);
+    }
+
+    .cta {
+      color:white;
+      text-decoration: none;
+    }
+
+</style>
+  <div class="panels">
+    <div class="panel panel1">
+      <p>草原</p>
+      <p>狮子</p>
+      <p>草原</p>
+    </div>
+    <div class="panel panel2">
+      <p>风景</p>
+      <p>山水</p>
+      <p>风景</p>
+    </div>
+    <div class="panel panel3">
+      <p>宇宙</p>
+      <p>星空</p>
+      <p>宇宙</p>
+    </div>
+    <div class="panel panel4">
+      <p>win10</p>
+      <p>壁纸</p>
+      <p>win10</p>
+    </div>
+    <div class="panel panel5">
+      <p>风景</p>
+      <p>湖泊</p>
+      <p>风景</p>
+    </div>
+  </div>
+
+  <script>
+	  const panels = document.querySelectorAll('.panel');
+	  
+	  function toggleOpen(e) {
+//		  console.log(this);
+		  this.classList.toggle('open');
+	  }
+	  
+	  panels.forEach( panel => panel.addEventListener('click', toggleOpen, false));
+  </script>
+
+</body>
+</html>
